@@ -17,7 +17,7 @@ spec:
   - name: service-version
     value: "1.0.0"
   - name: git-url
-    value: "https://github.com/smichard/cities_demo" #changeme
+    value: "https://github.com/smichard/nginx_base"
   - name: git-revision
     value: "main"
   - name: target-image
