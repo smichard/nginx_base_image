@@ -1,5 +1,5 @@
 # Use the nginx image based on Alpine
-FROM docker.io/library/nginx:alpine
+FROM quay.io/nginx/nginx-unprivileged:alpine
 
 USER 0
 
@@ -7,6 +7,6 @@ USER 0
 RUN apk add --no-cache tar
 
 # Copy your Nginx configuration file
-COPY nginx_config/default.conf /etc/nginx/conf.d/default.conf
+#COPY nginx_config/default.conf /etc/nginx/conf.d/default.conf
 
 USER 10001
