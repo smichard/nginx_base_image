@@ -1,0 +1,84 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: nginx-base
+spec:
+  workspaces:
+  - name: shared-workspace
+  - name: registry-credentials
+  params:
+  - name: service-version
+    type: string
+    default: "1.0.0"
+  - name: git-url
+    type: string
+    description: "Url of the git repo for the code of deployment"
+    default: https://github.com/smichard/cities_demo #changeme
+  - name: git-revision
+    type: string
+    description: "Revision to be used from repo of the code for deployment"
+    default: main
+  - name: target-image
+    type: string
+    description: "Image to be build from the code and push to external registry"
+    default: quay.io/michard/nginx_base:tekton
+  - name: message
+    type: string
+    description: "The message to send to the Matrix room"
+    default: "NGINX base: new image build and pushed to external registry. Build ID:"
+  - name: notification-secret
+    type: string
+    description: "Secret containing the Matrix credentials"
+    default: "matrix-secret"
+  tasks:
+  - name: get-build-id
+    taskRef:
+      name: generate-build-id
+    params:
+      - name: base-version
+        value: $(params.service-version)
+  - name: fetch-repository
+    taskRef:
+      name: git-clone
+      kind: ClusterTask
+    workspaces:
+    - name: output
+      workspace: shared-workspace
+    params:
+    - name: url
+      value: $(params.git-url)
+    - name: subdirectory
+      value: ""
+    - name: deleteExisting
+      value: "true"
+    - name: revision
+      value: $(params.git-revision)
+    runAfter:
+    - get-build-id
+  - name: build-image-external
+    retries: 3
+    taskRef:
+      name: buildah
+      kind: ClusterTask
+    params:
+    - name: IMAGE
+      value: $(params.target-image)-$(tasks.get-build-id.results.build-id)
+    - name: DOCKERFILE
+      value: "./Containerfile"
+    workspaces:
+    - name: source
+      workspace: shared-workspace
+    - name: dockerconfig
+      workspace: registry-credentials
+    runAfter:
+    - fetch-repository
+  - name: notification
+    taskRef:
+      name: notification-to-matrix
+    params:
+    - name: message
+      value: $(params.message) $(tasks.get-build-id.results.build-id)
+    - name: notification-secret
+      value: $(params.notification-secret)
+    runAfter:
+      - build-image-external

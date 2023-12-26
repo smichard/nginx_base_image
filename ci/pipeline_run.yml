@@ -1,0 +1,28 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: nginx-base-run-
+spec:
+  serviceAccountName: pipeline
+  pipelineRef:
+    name: nginx-base
+  workspaces:
+  - name: shared-workspace
+    persistentVolumeClaim:
+      claimName: nginx-base
+  - name: registry-credentials
+    secret:
+      secretName: quay-creds
+  params:
+  - name: service-version
+    value: "1.0.0"
+  - name: git-url
+    value: "https://github.com/smichard/cities_demo" #changeme
+  - name: git-revision
+    value: "main"
+  - name: target-image
+    value: "quay.io/michard/nginx_base:tekton"
+  - name: message
+    value: "NGINX base: new image build and pushed to internal and external registry. Build ID:"
+  - name: notification-secret
+    value: "matrix-secret"
