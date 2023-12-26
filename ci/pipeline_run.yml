@@ -9,7 +9,7 @@ spec:
   workspaces:
   - name: shared-workspace
     persistentVolumeClaim:
-      claimName: nginx-base
+      claimName: tekton-nginx-base
   - name: registry-credentials
     secret:
       secretName: quay-creds
