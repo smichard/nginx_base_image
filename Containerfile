@@ -1,5 +1,5 @@
 # Use the nginx image based on Alpine
-FROM quay.io/nginx/nginx-unprivileged:alpine3.17
+FROM quay.io/nginx/nginx-unprivileged:alpine3.18
 
 USER 0
 
