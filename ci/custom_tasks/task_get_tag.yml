@@ -1,0 +1,31 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: get-git-tag
+  labels:
+    app.kubernetes.io/version: "0.1"
+  annotations:
+    tekton.dev/pipelines.minVersion: "0.12.1"
+    tekton.dev/categories: Build Tools
+    tekton.dev/tags: build-tool
+    tekton.dev/platforms: "linux/amd64"
+spec:
+  description: >-
+    Task to generate a build tag
+  workspaces:
+    - name: source
+  results:
+    - name: build-tag
+      description: ID of the current build
+  steps:
+    - name: get-buildtag
+      image: quay.io/michard/developer_image:tekton-base
+      script: |
+        #!/bin/sh
+        pwd
+        ls
+        cd $(workspaces.source.path)
+        pwd
+        ls
+        buildtag=$(git describe --tags `git rev-list --tags --max-count=1`)
+        echo ${buildtag} | tr -d "\n" | tee $(results.buildtag.path)
