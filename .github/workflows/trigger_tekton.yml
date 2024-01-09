@@ -7,6 +7,11 @@ jobs:
   trigger_webhook:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@main
+      - name: Bump version and push tag
+        uses: darioblanco/bump-semver@v1.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Trigger Tekton Webhook      
         run: |
           curl -X POST -H "Content-Type: application/json" -d '{
