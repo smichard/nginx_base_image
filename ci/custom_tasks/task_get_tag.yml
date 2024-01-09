@@ -19,13 +19,25 @@ spec:
       description: ID of the current build
   steps:
     - name: get-buildtag
-      image: quay.io/michard/developer_image:tekton-base
+      image: quay.io/michard/developer_image:tekton-push
       script: |
         #!/bin/sh
         pwd
         ls
         cd $(workspaces.source.path)
+        echo start
+        git config --global --add safe.directory /workspace/source
         pwd
         ls
-        buildtag=$(git describe --tags `git rev-list --tags --max-count=1`)
-        echo ${buildtag} | tr -d "\n" | tee $(results.buildtag.path)
+        git fetch --tags
+        echo 1
+        git describe --tags
+        echo 15
+        git rev-list --tags --max-count=1
+        echo 16
+        buildtag=$(git describe --tags $(git rev-list --tags --max-count=1))
+        echo 2
+        echo "Current Build Tag: ${buildtag}"
+        echo 3
+        echo ${buildtag} | tr -d "\n" | tee $(results.build-tag.path)
+        echo 4
