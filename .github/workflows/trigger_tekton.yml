@@ -20,7 +20,7 @@ jobs:
         WITH_V: false
 
   trigger_tekton_webhook:
-    needs: build
+    needs: bump_tag
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Tekton Webhook      
