@@ -1,6 +1,6 @@
 schemaVersion: "2.2.0"
 metadata:
-  name: nginx_base
+  name: nginx_base_image
   namespace: smichard-devspaces
   attributes:
     metadata-name-field: generateName
@@ -15,14 +15,14 @@ attributes:
   dw.metadata.annotations:
     che.eclipse.org/devfile-source: |
       url:
-        location: https://github.com/smichard/nginx_base
+        location: https://github.com/smichard/nginx_base_image
       factory:
-        params: url=https://github.com/smichard/nginx_base
+        params: url=https://github.com/smichard/nginx_base_image
 projects:
-  - name: nginx-base
+  - name: nginx-base-image
     git:
       remotes:
-        origin: https://github.com/smichard/nginx_base.git
+        origin: https://github.com/smichard/nginx_base_image
 components:
   - name: devspaces-container
     container:

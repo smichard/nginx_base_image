@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: nginx-base
+  name: nginx-base-image
 spec:
   workspaces:
   - name: shared-workspace
@@ -10,7 +10,6 @@ spec:
   - name: git-url
     type: string
     description: "Url of the git repo for the code of deployment"
-    default: https://github.com/smichard/nginx_base
   - name: git-revision
     type: string
     description: "Revision to be used from repo of the code for deployment"
@@ -18,11 +17,9 @@ spec:
   - name: target-image
     type: string
     description: "Image to be build from the code and push to external registry"
-    default: quay.io/michard/nginx_base
   - name: message
     type: string
     description: "The message to send to the Matrix room"
-    default: "NGINX base: new image build and pushed to external registry. Build Tag:"
   - name: notification-secret
     type: string
     description: "Secret containing the Matrix credentials"

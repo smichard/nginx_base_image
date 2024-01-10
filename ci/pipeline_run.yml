@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: nginx-base-run-
+  generateName: nginx-base-image-run-
 spec:
   pipelineRef:
     name: nginx-base
@@ -22,12 +22,12 @@ spec:
       secretName: quay-creds
   params:
   - name: git-url
-    value: "https://github.com/smichard/nginx_base"
+    value: "https://github.com/smichard/nginx_base_image"
   - name: git-revision
     value: "main"
   - name: target-image
-    value: "quay.io/michard/nginx_base"
+    value: "quay.io/michard/nginx_base_image"
   - name: message
-    value: "NGINX base: new image build and pushed to external registry - Build Tag:"
+    value: "NGINX base image: new image build and pushed to external registry - Build Tag:"
   - name: notification-secret
     value: "matrix-secret"
