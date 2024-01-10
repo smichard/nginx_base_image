@@ -22,22 +22,9 @@ spec:
       image: quay.io/michard/developer_image:tekton-push
       script: |
         #!/bin/sh
-        pwd
-        ls
-        cd $(workspaces.source.path)
-        echo start
+        cd /workspace/source
         git config --global --add safe.directory /workspace/source
-        pwd
-        ls
         git fetch --tags
-        echo 1
-        git describe --tags
-        echo 15
-        git rev-list --tags --max-count=1
-        echo 16
         buildtag=$(git describe --tags $(git rev-list --tags --max-count=1))
-        echo 2
-        echo "Current Build Tag: ${buildtag}"
-        echo 3
+        echo "Current Build Tag:"
         echo ${buildtag} | tr -d "\n" | tee $(results.build-tag.path)
-        echo 4
