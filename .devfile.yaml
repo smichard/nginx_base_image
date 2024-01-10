@@ -19,7 +19,7 @@ attributes:
       factory:
         params: url=https://github.com/smichard/nginx_base
 projects:
-  - name: cities-demo
+  - name: nginx-base
     git:
       remotes:
         origin: https://github.com/smichard/nginx_base.git
