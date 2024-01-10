@@ -14,7 +14,7 @@ spec:
           - ReadWriteOnce
         resources:
           requests:
-            storage: 100Mi
+            storage: 30Mi
         storageClassName: managed-nfs-storage
         volumeMode: Filesystem
   - name: registry-credentials
