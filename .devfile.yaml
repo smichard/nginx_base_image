@@ -44,7 +44,7 @@ components:
 commands:
   - id: post-start-cmd
     exec:
-      label: '6. Post Start Commands'
+      label: 'Post Start Commands'
       component: devspaces-container
       commandLine: git config --global pull.rebase true
 events:
