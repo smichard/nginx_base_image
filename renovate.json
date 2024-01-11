@@ -3,6 +3,7 @@
   "extends": [
     "config:recommended"
   ],
+  "ignorePaths": ["**/Containerfile"],
   "tekton": {
     "fileMatch": ["ci/custom_tasks/.+\\.yml$"]
   },
