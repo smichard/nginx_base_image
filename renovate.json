@@ -15,9 +15,7 @@
       ],
       "depNameTemplate": "quay.io/michard/devspaces_base_image",
       "datasourceTemplate": "docker"
-    }
-  ],
-  "customManagers": [
+    },
     {
       "customType": "regex",
       "fileMatch": ["Containerfile"],
