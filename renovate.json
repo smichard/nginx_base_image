@@ -9,6 +9,6 @@
     "before 5pm every weekday"
   ],
   "tekton": {
-    "fileMatch": ["ci/.+\\.yml$"]
+    "fileMatch": ["ci/custom_tasks/.+\\.yml$"]
   }
 }
