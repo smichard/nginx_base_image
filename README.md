@@ -1,6 +1,9 @@
 # Nginx Base Image Repository
 
 [![Container Repository on Quay](https://quay.io/repository/michard/nginx_base_image/status "Container Repository on Quay")](https://quay.io/repository/michard/nginx_base_image)
+
+[![Container Repository on Quay](https://img.shields.io/badge/Quay-Container_Registry-ee0000 "Container Repository on Quay")](https://quay.io/repository/michard/nginx_base_image)
+
 [![Start Dev Space](https://www.eclipse.org/che/contribute.svg)](https://devspaces.apps.ocp.michard.cc#https://github.com/smichard/nginx_base_image)
 
 Overview
