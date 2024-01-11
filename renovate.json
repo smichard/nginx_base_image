@@ -16,5 +16,16 @@
       "depNameTemplate": "quay.io/michard/devspaces_base_image",
       "datasourceTemplate": "docker"
     }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["Containerfile"],
+      "matchStrings": [
+        "FROM quay\\.io/nginx/nginx-unprivileged:alpine(?<currentValue>3\\.\\d+)"
+      ],
+      "depNameTemplate": "quay.io/nginx/nginx-unprivileged",
+      "datasourceTemplate": "docker"
+    }
   ]
 }
