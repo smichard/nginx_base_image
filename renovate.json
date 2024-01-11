@@ -3,11 +3,6 @@
   "extends": [
     "config:recommended"
   ],
-  "timezone": "Europe/Berlin",
-  "schedule": [
-    "after 10am every weekday",
-    "before 5pm every weekday"
-  ],
   "tekton": {
     "fileMatch": ["ci/custom_tasks/.+\\.yml$"]
   },
