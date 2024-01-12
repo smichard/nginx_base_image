@@ -7,3 +7,4 @@ USER 0
 RUN apk add --no-cache tar
 
 USER 10001
+
