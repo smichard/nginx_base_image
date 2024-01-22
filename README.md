@@ -1,5 +1,6 @@
 # Nginx Base Image Repository
-
+[![GitHub Tag](https://img.shields.io/github/v/tag/smichard/nginx_base_image "GitHub Tag")](https://github.com/smichard/nginx_base_image/tags)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/smichard/nginx_base_image "GitHub Pull Requests")](https://github.com/smichard/nginx_base_image/pulls)
 [![Container Registry on Quay](https://img.shields.io/badge/Quay-Container_Registry-46b9e5 "Container Registry on Quay")](https://quay.io/repository/michard/nginx_base_image)
 [![Start Dev Space](https://www.eclipse.org/che/contribute.svg)](https://devspaces.apps.ocp.michard.cc#https://github.com/smichard/nginx_base_image)
 
