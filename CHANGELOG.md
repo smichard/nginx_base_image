@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) and to [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## 0.2.10 (2025-01-23)
+
+### Documentation
+- :robot: changelog file generated [`a1d88e4`](https://github.com/smichard/nginx_base_image/commit/a1d88e4)
+
+### Build
+- :rocket: new build workflow finalized [`a1555f5`](https://github.com/smichard/nginx_base_image/commit/a1555f5)
+
+### Chore
+- update quay.io/michard/tekton_base_image docker tag to v0.1.30 [`3562a8e`](https://github.com/smichard/nginx_base_image/commit/3562a8e)
+
+### Other
+- Merge branch 'main' of https://github.com/smichard/nginx_base [`dc050a9`](https://github.com/smichard/nginx_base_image/commit/dc050a9)
+
 ## 0.2.9 (2025-01-23)
 
 ### Feature
